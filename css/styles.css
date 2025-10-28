@@ -1,0 +1,157 @@
+/* Variables para fácil personalización */
+:root {
+    --bg-color: #0d0d0d; /* Fondo muy oscuro */
+    --neon-color: #00FFFF; /* Color de acento neón (Cian) */
+    --text-color: #f0f0f0; /* Texto claro */
+    --font-stack: 'Rajdhani', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-stack);
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+/* Títulos y Header con efecto neón */
+h1, h2, h3 {
+    text-align: center;
+    color: var(--neon-color);
+    /* Sombra para el efecto "brillo neón" */
+    text-shadow: 0 0 5px var(--neon-color), 0 0 10px var(--neon-color);
+    border-bottom: 2px solid var(--neon-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+header {
+    max-width: 900px;
+    margin: 0 auto 40px;
+    padding: 30px;
+    /* Borde luminoso */
+    border: 1px solid var(--neon-color);
+    box-shadow: 0 0 15px var(--neon-color);
+}
+
+/* Módulos o Secciones (Habilidades, Experiencia, Formación) */
+.neon-module {
+    background-color: rgba(0, 0, 0, 0.4); /* Fondo semi-transparente */
+    border-left: 5px solid var(--neon-color);
+    padding: 20px;
+    margin-bottom: 30px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.neon-module:hover {
+    /* Efecto al pasar el mouse para un toque interactivo */
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px var(--neon-color);
+}
+
+/* Listas (Habilidades y Formación) */
+ul {
+    list-style: none;
+    padding: 0;
+    display: flex; /* Para una presentación horizontal/grid de habilidades */
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+li {
+    background-color: #1a1a1a;
+    padding: 8px 15px;
+    border-radius: 5px;
+    border: 1px solid var(--neon-color);
+    box-shadow: 0 0 8px var(--neon-color); /* Pequeño brillo en cada habilidad */
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    border-top: 1px solid var(--neon-color);
+    box-shadow: 0 -5px 15px var(--neon-color); /* Borde superior brillante */
+}
+
+a {
+    color: var(--neon-color);
+    text-decoration: none;
+    text-shadow: 0 0 5px var(--neon-color);
+}
+/* --- ESTILOS PARA LA PANTALLA DE CARGA (TRON LOADER) --- */
+
+/* Contenedor de la pantalla de carga */
+#loader-wrapper {
+    position: fixed; /* Fija la pantalla de carga sobre todo el contenido */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-color); /* Fondo negro */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Asegura que esté por encima de todo */
+    transition: opacity 0.5s, visibility 0.5s; /* Para la transición de salida */
+}
+
+/* Contenedor de las líneas */
+.loader-line-group {
+    width: 80px;
+    height: 80px;
+    position: relative;
+    transform: rotate(45deg); /* Gira el grupo para el efecto Tron */
+}
+
+/* Estilo base de cada línea */
+.loader-line {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 3px solid transparent;
+    border-color: transparent transparent transparent var(--neon-color);
+    border-radius: 50%;
+    animation: tron-load 1.2s infinite ease-in-out;
+    /* Efecto Neón en la línea */
+    box-shadow: 0 0 10px var(--neon-color);
+}
+
+/* Retrasos para que las líneas se muevan en secuencia */
+.loader-line:nth-child(2) {
+    animation-delay: 0.1s;
+}
+.loader-line:nth-child(3) {
+    animation-delay: 0.2s;
+}
+.loader-line:nth-child(4) {
+    animation-delay: 0.3s;
+}
+.loader-line:nth-child(5) {
+    animation-delay: 0.4s;
+}
+
+/* Animación principal que gira las líneas */
+@keyframes tron-load {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Texto de carga */
+.loading-text {
+    margin-top: 30px;
+    color: var(--neon-color);
+    font-size: 1.2em;
+    /* Efecto Neón en el texto */
+    text-shadow: 0 0 8px var(--neon-color);
+    animation: pulse 1.5s infinite alternate; /* Animación de pulsación */
+}
+
+/* Animación de pulsación para el texto */
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    100% { opacity: 1; }
+}

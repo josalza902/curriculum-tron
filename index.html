@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jose Esteban Alzate Rojas - Desarrollador Fullstack (Tron Style)</title>
+    <link rel="stylesheet" href="css/styles.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="loader-wrapper">
+        <div class="loader-line-group">
+            <div class="loader-line"></div>
+            <div class="loader-line"></div>
+            <div class="loader-line"></div>
+            <div class="loader-line"></div>
+            <div class="loader-line"></div>
+        </div>
+        <p class="loading-text">ACCEDIENDO AL SISTEMA...</p>
+    </div>
+
+    <header class="neon-border">
+        <h1>Jose Esteban Alzate Rojas</h1>
+        <h2>Desarrollador Junior Fullstack</h2>
+        <p>Desarrollador web con experiencia en JavaScript, HTML, CSS, IndexedDB y MongoDB. He creado aplicaciones completas con autenticación, gestión de usuarios y diseño responsivo. También tengo conocimientos en Node.js, Express y sistemas embebidos con Arduino.</p>
+    </header>
+
+    <main>
+        
+        <section id="habilidades" class="neon-module">
+            <h3>🛠️ Habilidades</h3>
+            <ul>
+                <li>Python</li>
+                <li>Java Script</li>
+                <li>C++</li>
+                <li>MongoDb</li>
+                <li>Express</li>
+                <li>Git</li>
+                <li>MySql</li>
+                <li>raptor</li>
+                <li>Sales Force</li>
+            </ul>
+        </section>
+        
+        <section id="experiencia" class="neon-module">
+            <h3>💻 Experiencia y Proyectos (2023)</h3>
+            
+            <article>
+                <h4>Desarrollador Full-Stack Aplicación Web Bancaria</h4>
+                <p>Desarrollé una plataforma bancaria completa con autenticación de usuarios, transacciones y pagos de servicios utilizando JavaScript, HTML/CSS e IndexedDB. (Proyecto personal)</p>
+            </article>
+
+            <article>
+                <h4>Desarrollador Sistema de Gestión Académica</h4>
+                <p>Creé un sistema de gestión de calificaciones para administrativos y profesores, con asignación de cursos, registro de estudiantes y cálculo de promedios ponderados usando JavaScript modular. (Proyecto académico)</p>
+            </article>
+
+            <article>
+                <h4>Desarrollador de Sistemas Embebidos - Sembrador Inteligente</h4>
+                <p>Programé un robot basado en Arduino con sensores y servos para sembrar semillas cada treinta cm, integrando control en tiempo real y lógica de automatización. (Proyecto personal)</p>
+            </article>
+        </section>
+
+        <section id="formacion" class="neon-module">
+            <h3>🎓 Formación</h3>
+            <ul>
+                <li>**Software Development Training** en EanCampuslands (2024-2025)</li>
+                <li>**backend developer jr** en oracle + alura (2023)</li>
+                <li>**Bachiller** en institución educativa distrital toberin</li>
+            </ul>
+        </section>
+        
+        <section id="competencias" class="neon-module">
+            <h3>💡 Competencias Personales</h3>
+            <ul>
+                <li>Liderazgo</li>
+                <li>Creatividad</li>
+                <li>Empatía</li>
+                <li>Disciplina</li>
+                <li>Paciencia</li>
+                <li>Proactividad</li>
+                <li>Comunicación</li>
+                <li>Adaptabilidad</li>
+            </ul>
+        </section>
+
+    </main>
+
+    <footer class="neon-border">
+        <h3>Contacto e Idiomas</h3>
+        <p>GitHub: <a href="http://josalza902@github.com/">josalza902@github.com/</a></p>
+        <p>Idiomas: Inglés - A2 | Japonés - A1</p>
+    </footer>
+    <script>
+    // Espera a que la página esté completamente cargada
+    window.onload = function() {
+        // Obtiene el elemento de la pantalla de carga
+        const loaderWrapper = document.getElementById('loader-wrapper');
+
+        // Establece un temporizador para simular la carga (ej. 3 segundos)
+        setTimeout(function() {
+            // Oculta la pantalla de carga
+            loaderWrapper.style.opacity = '0'; // Hace una transición suave
+
+            // Quita el elemento del flujo después de la transición
+            setTimeout(function() {
+                loaderWrapper.style.display = 'none';
+            }, 500); // 500ms coincide con la duración de la transición CSS
+
+        }, 3000); // 3000 milisegundos = 3 segundos de "carga"
+    }
+</script>
+</body>
+</html>
