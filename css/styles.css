@@ -82,6 +82,129 @@ a {
     text-shadow: 0 0 5px var(--neon-color);
 }
 
+a:focus-visible, summary:focus-visible {
+    outline: 2px solid var(--text-color);
+    outline-offset: 4px;
+}
+
+.skip-link {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 1100;
+    padding: 8px 12px;
+    color: var(--bg-color);
+    background: var(--neon-color);
+    transform: translateY(-160%);
+}
+
+.skip-link:focus {
+    transform: translateY(0);
+}
+
+.section-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 22px;
+}
+
+.section-nav a {
+    padding: 7px 12px;
+    border: 1px solid rgba(0, 255, 255, 0.5);
+    border-radius: 5px;
+}
+
+.section-nav a:hover {
+    color: var(--bg-color);
+    background: var(--neon-color);
+    text-shadow: none;
+}
+
+.skill-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+    align-items: stretch;
+}
+
+.skill-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    box-shadow: none;
+}
+
+.skill-item strong {
+    color: var(--neon-color);
+}
+
+.skill-item span {
+    line-height: 1.4;
+}
+
+.skill-item a {
+    margin-top: auto;
+    padding-top: 5px;
+    font-size: 0.95em;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.additional-skills {
+    margin-top: 18px;
+    color: var(--text-color);
+}
+
+.additional-skills summary {
+    width: fit-content;
+    color: var(--neon-color);
+    cursor: pointer;
+}
+
+.additional-skills p {
+    margin: 10px 0 0;
+}
+
+.project-card {
+    margin: 18px 0;
+    padding: 18px;
+    border: 1px solid rgba(0, 255, 255, 0.45);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.025);
+}
+
+.project-card:target {
+    outline: 2px solid var(--neon-color);
+    outline-offset: 4px;
+}
+
+.project-heading {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+.project-heading h4 {
+    margin: 0;
+}
+
+.project-heading span {
+    padding: 3px 9px;
+    border: 1px solid rgba(0, 255, 255, 0.45);
+    border-radius: 99px;
+    color: var(--neon-color);
+    font-size: 0.9em;
+}
+
+.project-result {
+    padding-left: 12px;
+    border-left: 2px solid var(--neon-color);
+}
+
 .project-link {
     display: inline-block;
     margin-top: 6px;
@@ -91,6 +214,25 @@ a {
 .project-link:focus-visible {
     outline: 2px solid var(--text-color);
     outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+    .project-card {
+        padding: 14px;
+    }
+
+    .section-nav {
+        gap: 7px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }
 
 .contact-links {

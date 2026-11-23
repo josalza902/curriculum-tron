@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jose Esteban Alzate Rojas | Desarrollador Junior Fullstack</title>
-    <meta name="description" content="Portafolio de Jose Esteban Alzate Rojas, desarrollador junior fullstack con experiencia en JavaScript, Node.js y MongoDB." />
+    <title>Jose Esteban Alzate Rojas | Desarrollador Junior Full Stack</title>
+    <meta name="description" content="Portafolio de Jose Esteban Alzate Rojas. Proyectos con JavaScript, Node.js, Express, MongoDB e IndexedDB." />
+    <meta property="og:title" content="Jose Esteban Alzate Rojas | Desarrollador Junior Full Stack" />
+    <meta property="og:description" content="Proyectos de gestión de cines, gestión académica y sistemas embebidos." />
     <link rel="stylesheet" href="css/styles.css"> 
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
     <div id="loader-wrapper">
         <div class="loader-line-group">
             <div class="loader-line"></div>
@@ -22,40 +25,48 @@
 
     <header class="neon-border">
         <h1>Jose Esteban Alzate Rojas</h1>
-        <h2>Desarrollador Junior Fullstack | JavaScript y Node.js</h2>
-        <p>Desarrollador web con experiencia en JavaScript, HTML, CSS, IndexedDB y MongoDB. He creado aplicaciones completas con autenticación, gestión de usuarios y diseño responsivo. También tengo conocimientos en Node.js, Express y sistemas embebidos con Arduino.</p>
+        <h2>Desarrollador Junior Full Stack | JavaScript, Node.js y MongoDB</h2>
+        <p>Construyo aplicaciones web con JavaScript y Node.js. He desarrollado una API REST con Express y MongoDB, y un prototipo académico modular que usa IndexedDB para organizar estudiantes, cursos y calificaciones.</p>
+        <nav class="section-nav" aria-label="Navegación principal">
+            <a href="#habilidades">Habilidades</a>
+            <a href="#experiencia">Proyectos</a>
+            <a href="#formacion">Formación</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
     </header>
 
-    <main>
+    <main id="contenido">
         
         <section id="habilidades" class="neon-module">
-            <h3>🛠️ Habilidades</h3>
-            <ul>
-                <li>Python</li>
-                <li>JavaScript</li>
-                <li>C++</li>
-                <li>MongoDB</li>
-                <li>Express</li>
-                <li>Git</li>
-                <li>MySQL</li>
-                <li>Raptor</li>
-                <li>Salesforce</li>
+            <h3>🛠️ Habilidades aplicadas en proyectos</h3>
+            <ul class="skill-list">
+                <li class="skill-item"><strong>JavaScript</strong><span>Usado en la API y la aplicación modular académica.</span><span><a href="#proyecto-cines">Cines</a> · <a href="#proyecto-academico">Académico</a></span></li>
+                <li class="skill-item"><strong>Node.js y Express</strong><span>Base de la API REST de gestión de cines.</span><a href="#proyecto-cines">Ver evidencia</a></li>
+                <li class="skill-item"><strong>MongoDB</strong><span>Persistencia de datos en la API de cines.</span><a href="#proyecto-cines">Ver evidencia</a></li>
+                <li class="skill-item"><strong>IndexedDB</strong><span>Almacenamiento local en el prototipo académico.</span><a href="#proyecto-academico">Ver evidencia</a></li>
+                <li class="skill-item"><strong>JWT y validación</strong><span>Autenticación y validación en las rutas de escritura.</span><a href="#proyecto-cines">Ver evidencia</a></li>
             </ul>
+            <details class="additional-skills">
+                <summary>Otros conocimientos y herramientas</summary>
+                <p>Python, C++, Git, MySQL, Raptor y Salesforce.</p>
+            </details>
         </section>
         
         <section id="experiencia" class="neon-module">
             <h3>💻 Proyectos destacados</h3>
             
-            <article>
-                <h4>API de Gestión de Cines</h4>
-                <p>Desarrollé una API REST con Node.js, Express y MongoDB para administrar cines y salas. Incluye validación de datos, operaciones CRUD y autenticación JWT en las rutas de escritura.</p>
-                <a class="project-link" href="https://github.com/josalza902/PROYECTO_Gestion_Cine_Alzate_jose" target="_blank" rel="noopener noreferrer">Ver código en GitHub</a>
+            <article class="project-card" id="proyecto-cines">
+                <div class="project-heading"><h4>API de Gestión de Cines</h4><span>Proyecto personal</span></div>
+                <p>Desarrollé una API REST con Node.js, Express y MongoDB para administrar cines y salas. Incluye operaciones CRUD, validación de datos y autenticación JWT con permisos administrativos para las rutas de escritura.</p>
+                <p class="project-result"><strong>Alcance:</strong> rutas de consulta pública y administración protegida para cines y salas.</p>
+                <a class="project-link" href="https://github.com/josalza902/PROYECTO_Gestion_Cine_Alzate_jose" target="_blank" rel="noopener noreferrer">Explorar el código en GitHub ↗</a>
             </article>
 
-            <article>
-                <h4>Prototipo de Gestión Académica</h4>
-                <p>Implementé una aplicación en JavaScript modular para registrar estudiantes, organizar cursos y asignar calificaciones. Valida notas entre 0 y 100 y calcula la definitiva con ponderaciones de 30 %, 30 % y 40 %; los datos se guardan localmente en IndexedDB.</p>
-                <a class="project-link" href="https://github.com/josalza902/acme-school" target="_blank" rel="noopener noreferrer">Ver código en GitHub</a>
+            <article class="project-card" id="proyecto-academico">
+                <div class="project-heading"><h4>Prototipo de Gestión Académica</h4><span>Proyecto académico</span></div>
+                <p>Implementé una aplicación modular en JavaScript para registrar estudiantes, crear cursos, asignarlos y gestionar calificaciones. Usa IndexedDB, valida notas entre 0 y 100 y calcula la definitiva con ponderaciones de 30 %, 30 % y 40 %.</p>
+                <p class="project-result"><strong>Alcance:</strong> flujo local para organizar cursos y calificaciones desde el navegador.</p>
+                <a class="project-link" href="https://github.com/josalza902/acme-school" target="_blank" rel="noopener noreferrer">Explorar el código en GitHub ↗</a>
             </article>
 
             <article>
@@ -90,7 +101,7 @@
     </main>
 
     <footer class="neon-border">
-        <h3>Contacto e Idiomas</h3>
+        <h3 id="contacto">Contacto e Idiomas</h3>
         <nav class="contact-links" aria-label="Enlaces de contacto">
             <a class="contact-button" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=joseestebanalzaterojas%40gmail.com" target="_blank" rel="noopener noreferrer">Escríbeme por correo</a>
             <a class="contact-button" href="https://www.linkedin.com/in/jose-esteban-alzate-rojas-b57207353" target="_blank" rel="noopener noreferrer">Ver mi LinkedIn</a>
@@ -115,7 +126,7 @@
                 loaderWrapper.style.display = 'none';
             }, 500); // 500ms coincide con la duración de la transición CSS
 
-        }, 3000); // 3000 milisegundos = 3 segundos de "carga"
+        }, 300); // Muestra el loader brevemente para que el contenido aparezca rápido
     }
 </script>
 </body>
