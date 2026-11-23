@@ -82,6 +82,17 @@ a {
     text-shadow: 0 0 5px var(--neon-color);
 }
 
+.project-link {
+    display: inline-block;
+    margin-top: 6px;
+    border-bottom: 1px solid currentColor;
+}
+
+.project-link:focus-visible {
+    outline: 2px solid var(--text-color);
+    outline-offset: 3px;
+}
+
 .contact-links {
     display: flex;
     flex-wrap: wrap;
