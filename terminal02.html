@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Jose Esteban Alzate Rojas · Desarrollador Junior Fullstack</title>
+<meta name="description" content="Portafolio de Jose Esteban Alzate Rojas con proyectos de desarrollo web, JavaScript, Node.js y bases de datos.">
+<meta property="og:title" content="Jose Esteban Alzate Rojas · Desarrollador Junior Fullstack">
+<meta property="og:description" content="Proyectos de gestión de cines y gestión académica, habilidades técnicas y trayectoria.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   DIRECCIÓN: Terminal · Paleta A (noche, verde fósforo, ámbar)
+   Para cambiar colores, edita solo estas variables.
+   ========================================================= */
+:root{
+  --bg:#0a0e13; --panel:#0f141b; --panel-2:#131a23; --linea:#1e2833; --texto:#d5dde6; --tenue:#7a8796;
+  --acento:#3ddc84; --acento-2:#ffb454; --info:#5ccfe6; --alerta:#ff6b6b;
+  --mono:"JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --sans:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --ancho:1180px; --pad:clamp(14px,4vw,40px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--texto);font-family:var(--mono);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:28px 28px}
+a{color:inherit}
+::selection{background:var(--acento);color:var(--bg)}
+:focus-visible{outline:2px solid var(--acento);outline-offset:3px}
+.wrap{max-width:var(--ancho);margin:0 auto;padding:0 var(--pad)}
+.dim{color:var(--tenue)} .g{color:var(--acento)} .a{color:var(--acento-2)} .c{color:var(--info)}
+
+/* ---------- Barra de estado (estilo tmux) ---------- */
+.bar{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--linea);font-size:13px}
+.bar .wrap{display:flex;align-items:center;gap:16px;height:44px}
+.bar .who{color:var(--acento);font-weight:700;white-space:nowrap}
+.tabs{display:flex;gap:2px;flex:1;justify-content:center}
+.tabs a{text-decoration:none;padding:4px 10px;border-radius:4px;color:var(--tenue);white-space:nowrap;transition:background .2s,color .2s}
+.tabs a b{color:var(--acento-2);font-weight:500;margin-right:4px}
+.tabs a:hover,.tabs a.on{background:var(--panel-2);color:var(--texto)}
+.clock{white-space:nowrap;color:var(--tenue)}
+.live{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--acento);margin-right:6px;box-shadow:0 0 10px var(--acento);vertical-align:1px}
+
+/* ---------- Ventanas ---------- */
+.win{background:var(--panel);border:1px solid var(--linea);border-radius:10px;overflow:hidden;box-shadow:0 30px 80px -40px rgba(0,0,0,.8)}
+.chrome{display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--panel-2);border-bottom:1px solid var(--linea);font-size:12px;color:var(--tenue)}
+.chrome i{width:11px;height:11px;border-radius:50%;display:inline-block}
+.chrome i:nth-child(1){background:#ff5f57}.chrome i:nth-child(2){background:#febc2e}.chrome i:nth-child(3){background:#28c840}
+.chrome span{margin-left:8px}
+.body{padding:clamp(18px,3vw,34px)}
+.cmd{color:var(--texto);font-weight:500;white-space:pre-wrap;word-break:break-word}
+.cmd::before{content:"laura@portafolio:~$ ";color:var(--acento)}
+.cmd .typed{white-space:pre}
+.cursor{display:inline-block;width:.6em;height:1.15em;background:var(--acento);vertical-align:-.2em;margin-left:2px;animation:blink 1.05s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.out{margin-top:14px}
+
+/* ---------- Hero ---------- */
+.hero{padding:clamp(28px,6vw,70px) 0 clamp(30px,5vw,60px)}
+.big{font-weight:800;font-size:clamp(44px,8.6vw,118px);line-height:.95;letter-spacing:-.04em;margin:8px 0 6px;color:#f2f6fa}
+.big .g{text-shadow:0 0 28px color-mix(in srgb,var(--acento) 45%,transparent)}
+.role{font-size:clamp(15px,1.6vw,19px);color:var(--acento-2)}
+.comment{font-family:var(--sans);font-size:clamp(19px,2.1vw,26px);line-height:1.4;color:var(--texto);max-width:820px;margin-top:22px}
+.comment::before{content:"# ";font-family:var(--mono);color:var(--tenue)}
+.comment b{color:var(--acento);font-weight:500}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--linea);border:1px solid var(--linea);border-radius:8px;overflow:hidden;margin-top:28px}
+.stat{background:var(--panel);padding:16px 18px}
+.stat .k{font-size:12px;color:var(--tenue)}
+.stat strong{display:block;font-size:clamp(28px,3.4vw,42px);font-weight:700;color:var(--acento);line-height:1.1;margin-top:4px}
+.stat span{font-family:var(--sans);font-size:14px;color:var(--tenue)}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.btn{max-width:100%;overflow-wrap:anywhere;display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;font-size:14px;padding:11px 16px;border-radius:6px;border:1px solid var(--linea);background:var(--panel-2);transition:border-color .2s,transform .2s}
+.btn:hover{border-color:var(--acento);transform:translateY(-1px)}
+.btn.pri{background:var(--acento);color:#04140b;border-color:var(--acento)}
+.btn kbd{font-family:var(--mono);font-size:11px;border:1px solid currentColor;border-radius:3px;padding:0 5px;opacity:.7}
+
+/* ---------- Secciones ---------- */
+section.sec{padding:clamp(36px,6vw,70px) 0;scroll-margin-top:50px}
+.sechead{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:18px;flex-wrap:wrap}
+.sechead h2{font-size:clamp(24px,3vw,34px);font-weight:800;letter-spacing:-.02em}
+.sechead h2 .n{color:var(--acento-2);font-weight:500;margin-right:10px}
+.sechead p{font-family:var(--sans);color:var(--tenue);max-width:520px}
+
+/* Habilidades: árbol con evidencia */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 18px}
+.filters button{font:inherit;font-size:13px;background:var(--panel-2);color:var(--tenue);border:1px solid var(--linea);padding:6px 12px;border-radius:5px;cursor:pointer}
+.filters button[aria-pressed="true"]{color:var(--bg);background:var(--acento);border-color:var(--acento);font-weight:700}
+.skills{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.skill{background:var(--panel-2);border:1px solid var(--linea);border-radius:8px;padding:18px 20px;scroll-margin-top:60px;transition:border-color .25s,transform .25s}
+.skill:hover,.skill:target{border-color:color-mix(in srgb,var(--acento) 60%,var(--linea))}
+.skill:target{box-shadow:0 0 0 1px var(--acento)}
+.skill .top{display:flex;justify-content:space-between;gap:6px 10px;align-items:baseline;flex-wrap:wrap}
+.skill h3{font-size:19px;font-weight:700;color:#f2f6fa}
+.skill h3::before{content:"▸ ";color:var(--acento)}
+.badge{font-size:11px;padding:2px 8px;border-radius:99px;border:1px solid var(--linea);color:var(--tenue);white-space:nowrap}
+.badge.t{color:var(--info);border-color:color-mix(in srgb,var(--info) 40%,transparent)}
+.badge.p{color:var(--acento-2);border-color:color-mix(in srgb,var(--acento-2) 40%,transparent)}
+.tree{margin-top:12px;font-size:14px}
+.tree .row{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;padding:3px 0}
+.tree .k{color:var(--tenue);white-space:pre}
+.tree .v{font-family:var(--sans);font-size:15px;line-height:1.45}
+.tree .v a{color:var(--acento);text-decoration:none;font-family:var(--mono);font-size:13px;overflow-wrap:anywhere}
+.tree .v a:hover{text-decoration:underline}
+.chip{display:inline-block;font-family:var(--mono);font-size:12px;color:var(--info);margin:0 6px 4px 0}
+.chip::before{content:"["}.chip::after{content:"]"}
+.skill.hide{display:none}
+
+/* Proyectos: repositorios */
+.repos{display:grid;gap:16px}
+.repo{border:1px solid var(--linea);border-radius:8px;background:var(--panel-2);scroll-margin-top:60px;transition:border-color .25s}
+.repo:hover,.repo:target{border-color:color-mix(in srgb,var(--acento) 60%,var(--linea))}
+.repo-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 20px;border-bottom:1px solid var(--linea);flex-wrap:wrap}
+.repo-head h3{font-size:18px;font-weight:700;color:#f2f6fa;overflow-wrap:anywhere}
+.repo-head h3 .dim{font-weight:400}
+.repo-head h3 a{text-decoration:none}.repo-head h3 a:hover{color:var(--acento)}
+.ok{font-size:12px;color:var(--acento)}
+.repo-body{display:grid;grid-template-columns:1fr 1fr .8fr;gap:22px;padding:18px 20px}
+.repo-body .k{font-size:12px;color:var(--tenue);margin-bottom:4px}
+.repo-body p{font-family:var(--sans);font-size:15px;line-height:1.45}
+.res strong{display:block;font-size:34px;font-weight:800;color:var(--acento);line-height:1.05;text-shadow:0 0 22px color-mix(in srgb,var(--acento) 30%,transparent)}
+.repo-tags{padding:0 20px 16px;display:flex;gap:8px;flex-wrap:wrap}
+.repo-tags a{font-size:12px;text-decoration:none;color:var(--acento-2);border:1px solid color-mix(in srgb,var(--acento-2) 35%,transparent);padding:3px 9px;border-radius:4px}
+.repo-tags a:hover{background:color-mix(in srgb,var(--acento-2) 14%,transparent)}
+
+/* Trayectoria: git log */
+.log{font-size:14px}
+.commit{display:grid;grid-template-columns:auto auto 1fr;gap:14px;padding:12px 0;border-bottom:1px dashed var(--linea);align-items:baseline}
+.commit:last-child{border-bottom:0}
+.hash{color:var(--acento-2)}
+.when{color:var(--tenue);white-space:nowrap}
+.msg b{color:#f2f6fa;font-weight:700}
+.msg span{display:block;font-family:var(--sans);color:var(--tenue);font-size:14px;margin-top:2px}
+.head-ref{color:var(--info)}
+
+/* Contacto */
+.contact .big{font-size:clamp(40px,7vw,90px)}
+.links{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+footer{border-top:1px solid var(--linea);padding:18px 0 36px;font-size:12px;color:var(--tenue)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+footer kbd{font-family:var(--mono);border:1px solid var(--linea);border-radius:3px;padding:0 5px;color:var(--texto)}
+
+/* ---------- Movimiento (sin saltos) ----------
+   Visible por defecto; el estado inicial solo aplica si el JS cargó. */
+.js .rv{opacity:0;transform:translateY(10px)}
+.js .rv.in{opacity:1;transform:none;transition:opacity .55s ease,transform .55s cubic-bezier(.16,1,.3,1);transition-delay:var(--d,0s)}
+.js .hero .rv{transition-delay:var(--d,0s)}
+.js .hero:not(.go) .rv{opacity:0}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .js .rv,.js .hero:not(.go) .rv{opacity:1;transform:none}
+}
+
+/* ---------- Celular ---------- */
+@media (max-width:860px){
+  .tabs{display:none}
+  .skills{grid-template-columns:minmax(0,1fr)}
+  .repo-body{grid-template-columns:minmax(0,1fr)}
+  .repo-body{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr 1fr 1fr}
+  .stat{padding:12px}
+  .stat span{font-size:12px}
+  .commit{grid-template-columns:auto 1fr}
+  .commit .when{grid-column:2;grid-row:1;justify-self:end}
+  .commit .msg{grid-column:1 / -1}
+}
+</style>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<!-- =========================================================
+     TUS DATOS: edita solo el objeto PERFIL (en el script de abajo).
+     Es el mismo formato de la plantilla editorial: puedes cambiar de estilo sin reescribir nada.
+     ========================================================= -->
+<header class="bar">
+  <div class="wrap">
+    <span class="who" id="who"></span>
+    <nav class="tabs" aria-label="Secciones">
+      <a href="#habilidades" data-k="1"><b>1</b>habilidades</a>
+      <a href="#proyectos" data-k="2"><b>2</b>proyectos</a>
+      <a href="#trayectoria" data-k="3"><b>3</b>trayectoria</a>
+      <a href="#contacto" data-k="4"><b>4</b>contacto</a>
+    </nav>
+    <span class="clock"><i class="live" aria-hidden="true"></i><span id="clock">Bogotá</span></span>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="hero" id="hero">
+    <div class="wrap">
+      <div class="win">
+        <div class="chrome"><i></i><i></i><i></i><span id="ventana"></span></div>
+        <div class="body">
+          <p class="cmd"><span class="typed" id="t-hero">whoami</span><span class="cursor" id="cur" aria-hidden="true"></span></p>
+          <div class="out">
+            <h1 class="big rv" style="--d:.05s" id="nombre"></h1>
+            <p class="role rv" style="--d:.12s" id="rol"></p>
+            <p class="comment rv" style="--d:.2s" id="titular"></p>
+            <div class="stats rv" style="--d:.3s" id="cifras"></div>
+            <div class="actions rv" style="--d:.38s">
+              <a class="btn pri" href="#habilidades">ver habilidades <kbd>1</kbd></a>
+              <a class="btn" href="#contacto">contactar <kbd>4</kbd></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="habilidades">
+    <div class="wrap">
+      <div class="sechead rv"><h2><span class="n">01</span>skills --con-evidencia</h2><p>Cada habilidad con lo que hago, la prueba y el stack. Los enlaces abren el proyecto que la demuestra.</p></div>
+      <div class="filters rv" role="group" aria-label="Filtrar habilidades">
+        <button type="button" data-f="todas" aria-pressed="true">--todas</button>
+        <button type="button" data-f="Técnica" aria-pressed="false">--técnicas</button>
+        <button type="button" data-f="Personal" aria-pressed="false">--personales</button>
+      </div>
+      <div class="skills" id="lista-habilidades"></div>
+    </div>
+  </section>
+
+  <section class="sec" id="proyectos">
+    <div class="wrap">
+      <div class="sechead rv"><h2><span class="n">02</span>ls proyectos/</h2><p>Problema, lo que hice y el resultado. Las etiquetas muestran qué habilidades demuestra cada uno.</p></div>
+      <div class="repos" id="lista-proyectos"></div>
+    </div>
+  </section>
+
+  <section class="sec" id="trayectoria">
+    <div class="wrap">
+      <div class="sechead rv"><h2><span class="n">03</span>git log --trayectoria</h2></div>
+      <div class="win rv"><div class="chrome"><i></i><i></i><i></i><span>historial</span></div><div class="body log" id="lista-trayectoria"></div></div>
+    </div>
+  </section>
+
+  <section class="sec contact" id="contacto">
+    <div class="wrap">
+      <div class="win rv">
+        <div class="chrome"><i></i><i></i><i></i><span>contacto</span></div>
+        <div class="body">
+          <p class="cmd">contact --enviar</p>
+          <div class="out">
+            <p class="big">¿Hablamos<span class="g">?</span></p>
+            <p class="comment" id="lema"></p>
+            <div class="links" id="enlaces"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap"><span id="pie"></span><span>atajos: <kbd>1</kbd>–<kbd>4</kbd> secciones · <kbd>0</kbd> inicio · hecho con apoyo de IA</span></div></footer>
+<noscript><p style="padding:20px;text-align:center">Activa JavaScript para ver el portafolio completo.</p></noscript>
+
+<script>
+/* =========================================================
+   PERFIL · TODO lo que se muestra sale de aquí
+   ========================================================= */
+const PERFIL = {
+  nombre: ["Jose Esteban", "Alzate Rojas"],
+  iniciales: "JEAR",
+  usuario: "josalza902",
+  rol: "Desarrollador Junior Fullstack",
+  ciudad: "Colombia",
+  estado: "Perfil junior",
+  titular: "Desarrollo proyectos web con <b>JavaScript, Node.js y bases de datos</b>, desde prototipos académicos hasta APIs con operaciones CRUD.",
+  cifras: [
+    { valor: 2, prefijo: "", sufijo: "", texto: "proyectos principales en GitHub" },
+    { valor: 3, prefijo: "", sufijo: "", texto: "tecnologías de la API de cines" },
+    { valor: 100, prefijo: "", sufijo: "%", texto: "suma de ponderaciones de notas" }
+  ],
+  habilidades: [
+    { id: "javascript", nombre: "JavaScript", tipo: "Técnica",
+      que: "Desarrollo módulos y lógica para aplicaciones web y servicios.",
+      prueba: "La aplicación académica registra estudiantes, cursos y calificaciones; la API de cines expone rutas CRUD.",
+      herramientas: ["JavaScript", "ES modules"], proyectos: ["cines", "academico"] },
+    { id: "backend", nombre: "Desarrollo backend", tipo: "Técnica",
+      que: "Construyo endpoints para consultar y administrar información.",
+      prueba: "Implementé rutas para cines y salas con operaciones CRUD, validación y autenticación JWT.",
+      herramientas: ["Node.js", "Express", "JWT"], proyectos: ["cines"] },
+    { id: "datos", nombre: "Persistencia de datos", tipo: "Técnica",
+      que: "Trabajo con almacenamiento local en navegador y bases de datos documentales.",
+      prueba: "La API usa MongoDB y el prototipo académico conserva sus datos en IndexedDB.",
+      herramientas: ["MongoDB", "IndexedDB"], proyectos: ["cines", "academico"] },
+    { id: "validacion", nombre: "Validación y lógica de negocio", tipo: "Técnica",
+      que: "Valido entradas y aplico reglas de cálculo en los flujos de una aplicación.",
+      prueba: "El sistema académico valida notas de 0 a 100 y calcula la definitiva con pesos de 30 %, 30 % y 40 %.",
+      herramientas: ["JavaScript", "Express Validator"], proyectos: ["academico", "cines"] }
+  ],
+  proyectos: [
+    { id: "cines", titulo: "API de Gestión de Cines", enlace: "https://github.com/josalza902/PROYECTO_Gestion_Cine_Alzate_jose",
+      problema: "Se requieren operaciones para consultar y mantener registros de cines y salas.",
+      accion: "Desarrollé una API REST con Node.js, Express y MongoDB; incluye CRUD, validación de datos y autenticación JWT con permisos administrativos.",
+      resultado: { cifra: "CRUD", texto: "rutas de consulta y administración para cines y salas" },
+      habilidades: ["javascript", "backend", "datos", "validacion"] },
+    { id: "academico", titulo: "Prototipo de Gestión Académica", enlace: "https://github.com/josalza902/acme-school",
+      problema: "El prototipo reúne el registro de estudiantes, la organización de cursos y el manejo de calificaciones.",
+      accion: "Implementé módulos JavaScript con IndexedDB para registrar estudiantes, crear cursos, asignarlos y guardar notas ponderadas.",
+      resultado: { cifra: "30/30/40", texto: "ponderaciones usadas para calcular la nota final" },
+      habilidades: ["javascript", "datos", "validacion"] }
+  ],
+  trayectoria: [
+    { cuando: "2024 — 2025", rol: "Estudiante de Desarrollo de Software", lugar: "EAN Campuslands", detalle: "Formación en desarrollo de software." },
+    { cuando: "2023", rol: "Backend Developer Jr.", lugar: "Oracle + Alura", detalle: "Formación en desarrollo backend." }
+  ],
+  lema: { texto: "Proyectos de software que muestran <b>cómo convierto requisitos en soluciones.</b>", firma: "Mi trabajo" },
+  contacto: { correo: "joseestebanalzaterojas@gmail.com", linkedin: "https://www.linkedin.com/in/jose-esteban-alzate-rojas-b57207353", github: "https://github.com/josalza902" }
+};
+
+/* =========================================================
+   Renderizado · no necesitas tocar nada de aquí hacia abajo
+   ========================================================= */
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const P = PERFIL, user = (P.usuario || P.nombre[0]).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+const byId = Object.fromEntries(P.proyectos.map((p,i) => [p.id, {...p, n:i+1}]));
+const skill = Object.fromEntries(P.habilidades.map(h => [h.id, h]));
+const hash = s => { let h = 5381; for (const ch of s) h = ((h << 5) + h + ch.charCodeAt(0)) >>> 0; return h.toString(16).padStart(7, "0").slice(0, 7); };
+const slug = s => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
+document.title = `${P.nombre.join(" ")} · ${P.rol}`;
+const prompt = `${user}@portafolio:~$ `;
+const st = document.createElement("style"); st.textContent = `.cmd::before{content:${JSON.stringify(prompt)}}`; document.head.appendChild(st);
+$("#who").textContent = `${user}@portafolio`;
+$("#ventana").textContent = `${user} — ${P.ciudad}`;
+$("#nombre").innerHTML = `${esc(P.nombre[0])} <span class="g">${esc(P.nombre[1])}</span>`;
+$("#rol").innerHTML = `${esc(P.rol)} <span class="dim">·</span> <span class="g">● ${esc(P.estado)}</span>`;
+$("#titular").innerHTML = P.titular;
+$("#cifras").innerHTML = P.cifras.map((c,i) => `<div class="stat"><div class="k">stat[${i}]</div><strong data-v="${c.valor}" data-p="${esc(c.prefijo)}" data-s="${esc(c.sufijo)}">${esc(c.prefijo)}${c.valor}${esc(c.sufijo)}</strong><span>${esc(c.texto)}</span></div>`).join("");
+
+$("#lista-habilidades").innerHTML = P.habilidades.map((h,i) => {
+  const pr = h.proyectos.filter(id => byId[id]);
+  return `<article class="skill rv" style="--d:${(i%2)*.06}s" id="h-${h.id}" data-tipo="${esc(h.tipo)}">
+    <div class="top"><h3>${esc(h.nombre)}</h3><span class="badge ${h.tipo === "Técnica" ? "t" : "p"}">${esc(h.tipo.toLowerCase())} · ${pr.length} ${pr.length===1?"proyecto":"proyectos"}</span></div>
+    <div class="tree">
+      <div class="row"><span class="k">├─ hace  </span><span class="v">${esc(h.que)}</span></div>
+      <div class="row"><span class="k">├─ prueba</span><span class="v">${esc(h.prueba)} ${pr.map(id => `<a href="#p-${id}">→ ./${slug(byId[id].titulo)}</a>`).join(" ")}</span></div>
+      <div class="row"><span class="k">└─ stack </span><span class="v">${h.herramientas.map(t => `<span class="chip">${esc(t)}</span>`).join("")}</span></div>
+    </div></article>`;
+}).join("");
+
+$("#lista-proyectos").innerHTML = P.proyectos.map((p,i) => `<article class="repo rv" id="p-${p.id}">
+    <div class="repo-head"><h3><span class="dim">${user}/</span>${p.enlace ? `<a href="${esc(p.enlace)}" target="_blank" rel="noopener">${slug(p.titulo)} ↗</a>` : slug(p.titulo)}</h3><span class="ok">✓ ${esc(p.titulo)}</span></div>
+    <div class="repo-body">
+      <div><div class="k">// problema</div><p>${esc(p.problema)}</p></div>
+      <div><div class="k">// lo que hice</div><p>${esc(p.accion)}</p></div>
+      <div class="res"><div class="k">// resultado</div><strong>${esc(p.resultado.cifra)}</strong><p>${esc(p.resultado.texto)}</p></div>
+    </div>
+    <div class="repo-tags" aria-label="Habilidades que demuestra">${p.habilidades.filter(id => skill[id]).map(id => `<a href="#h-${id}">#${slug(skill[id].nombre)}</a>`).join("")}</div>
+  </article>`).join("");
+
+$("#lista-trayectoria").innerHTML = P.trayectoria.map((t,i) => `<div class="commit">
+    <span class="hash">${hash(t.rol + t.cuando)}</span>${i === 0 ? `<span class="when"><span class="head-ref">(HEAD)</span> ${esc(t.cuando)}</span>` : `<span class="when">${esc(t.cuando)}</span>`}
+    <div class="msg"><b>${esc(t.rol)}</b> <span class="dim">@ ${esc(t.lugar)}</span><span>${esc(t.detalle)}</span></div></div>`).join("");
+
+$("#lema").innerHTML = P.lema.texto;
+const c = P.contacto;
+$("#enlaces").innerHTML = [
+  `<a class="btn pri" href="mailto:${esc(c.correo)}">enviar correo ↗</a>`,
+  `<button class="btn" type="button" id="copiar" style="font:inherit;font-weight:700;font-size:14px;color:inherit;cursor:pointer">copiar: ${esc(c.correo)}</button>`,
+  c.linkedin && `<a class="btn" href="${esc(c.linkedin)}" target="_blank" rel="noopener">linkedin ↗</a>`,
+  c.github && `<a class="btn" href="${esc(c.github)}" target="_blank" rel="noopener">github ↗</a>`
+].filter(Boolean).join("");
+$("#copiar").addEventListener("click", e => {
+  const b = e.currentTarget;
+  navigator.clipboard?.writeText(c.correo).then(() => { const t = b.textContent; b.textContent = "✓ copiado al portapapeles"; setTimeout(() => b.textContent = t, 1800); });
+});
+$("#pie").textContent = `© ${new Date().getFullYear()} ${P.nombre.join(" ")} · ${P.ciudad}`;
+
+/* Reloj de Bogotá en la barra */
+const tick = () => { try { $("#clock").textContent = "Bogotá " + new Intl.DateTimeFormat("es-CO", { hour: "2-digit", minute: "2-digit", hour12: false, timeZone: "America/Bogota" }).format(new Date()); } catch (_) {} };
+tick(); setInterval(tick, 30000);
+
+/* Filtros de habilidades */
+document.querySelectorAll(".filters button").forEach(b => b.addEventListener("click", () => {
+  document.querySelectorAll(".filters button").forEach(x => x.setAttribute("aria-pressed", x === b));
+  document.querySelectorAll(".skill").forEach(s => s.classList.toggle("hide", b.dataset.f !== "todas" && s.dataset.tipo !== b.dataset.f));
+}));
+
+/* Atajos de teclado 0–4 */
+const keys = { "0": "#inicio", "1": "#habilidades", "2": "#proyectos", "3": "#trayectoria", "4": "#contacto" };
+addEventListener("keydown", e => {
+  if (e.target.closest("input,textarea") || e.metaKey || e.ctrlKey || e.altKey) return;
+  if (keys[e.key]) { e.preventDefault(); document.querySelector(keys[e.key]).scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }); }
+});
+
+/* Pestaña activa según la sección visible */
+const tabs = [...document.querySelectorAll(".tabs a")];
+["habilidades","proyectos","trayectoria","contacto"].forEach(id => {
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) tabs.forEach(t => t.classList.toggle("on", t.getAttribute("href") === "#" + id)); }), { rootMargin: "-45% 0px -50% 0px" });
+  io.observe(document.getElementById(id));
+});
+
+/* =========================================================
+   Movimiento: el comando se escribe y luego aparece la salida
+   ========================================================= */
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+function countUp(el) {
+  if (reduce) return;
+  const v = +el.dataset.v, p = el.dataset.p, s = el.dataset.s, t0 = performance.now(), d = 1200;
+  const step = t => { const k = Math.min(1, (t - t0) / d), e = 1 - Math.pow(1 - k, 4); el.textContent = p + Math.round(v * e) + s; if (k < 1) requestAnimationFrame(step); };
+  requestAnimationFrame(step);
+}
+function typeHero() {
+  const el = $("#t-hero"), full = el.textContent, hero = $("#hero");
+  const done = () => { hero.classList.add("go"); hero.querySelectorAll(".rv").forEach(r => r.classList.add("in")); hero.querySelectorAll("[data-v]").forEach(countUp); };
+  if (reduce) return done();
+  el.textContent = ""; let i = 0;
+  const step = () => { el.textContent = full.slice(0, ++i); if (i < full.length) setTimeout(step, 70 + Math.random() * 50); else setTimeout(done, 180); };
+  setTimeout(step, 250);
+}
+const start = () => {
+  typeHero();
+  const io = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; e.target.classList.add("in"); io.unobserve(e.target); }),
+    { rootMargin: "0px 0px -6% 0px", threshold: .06 });
+  document.querySelectorAll("section.sec .rv").forEach(el => io.observe(el));
+};
+Promise.race([document.fonts ? document.fonts.ready : Promise.resolve(), new Promise(r => setTimeout(r, 1000))]).then(() => requestAnimationFrame(start));
+</script>
+</body>
+</html>
