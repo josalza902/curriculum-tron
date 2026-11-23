@@ -81,6 +81,46 @@ a {
     text-decoration: none;
     text-shadow: 0 0 5px var(--neon-color);
 }
+
+.contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.contact-button {
+    display: inline-block;
+    padding: 10px 16px;
+    border: 1px solid var(--neon-color);
+    border-radius: 5px;
+    background: #111;
+    box-shadow: 0 0 8px rgba(0, 255, 255, 0.45);
+}
+
+.contact-button:hover,
+.contact-button:focus-visible {
+    color: var(--bg-color);
+    background: var(--neon-color);
+    text-shadow: none;
+    outline: 2px solid var(--text-color);
+    outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 14px;
+    }
+
+    header {
+        padding: 20px 16px;
+    }
+
+    .contact-links {
+        flex-direction: column;
+    }
+}
 /* --- ESTILOS PARA LA PANTALLA DE CARGA (TRON LOADER) --- */
 
 /* Contenedor de la pantalla de carga */
